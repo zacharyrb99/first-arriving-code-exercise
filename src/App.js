@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Weather from "./Weather";  
 import './App.css';
 
 function App() {
-  const latitude = 37.6928;
-  const longitude = -77.4364;
   const [weather, setWeather] = useState({weather: null})
 
   const getWeatherData = async () => {
@@ -19,7 +18,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1> First Arriving </h1>
+      <Weather data={weather} />
     </div>
   )
 }
