@@ -1,0 +1,17 @@
+.Weather-mainInfo {
+    position: relative;
+    height: 20%;
+    width: 50%;
+}
+
+.Weather-icon {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.Weather-forecast {
+    position: ;
+    margin: auto;
+}

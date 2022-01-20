@@ -4,22 +4,32 @@ import Weather from "./Weather";
 import './App.css';
 
 function App() {
-  const [weather, setWeather] = useState(null)
+  const [weather, setWeather] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const getWeatherData = async () => {
       let weatherData = await axios.get("https://api.weather.gov/gridpoints/AKQ/44,83/forecast");
-      setWeather(weatherData.data.properties);
+      setWeather(weatherData.data.properties.periods[0]);
+      setIsLoading(false)
     }
 
     getWeatherData();
 
-    let interval = setInterval(() => getWeatherData(), 10000);
+    setInterval(() => getWeatherData(), 600000);
   }, [])
+
+  if(isLoading) {
+    return (
+      <div className="Weather-loading">
+        <h1> Loading Weather Data </h1> 
+      </div>
+    )
+  }
 
   return (
     <div className="App">
-      <Weather data={weather} />
+      <Weather weather={weather} />
     </div>
   )
 }
